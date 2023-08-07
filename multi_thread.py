@@ -10,7 +10,7 @@ additional_ports = range(1, 1025) # 1~1024 포트 범위 추가
 
 def scanner(target):
     #pimg 명령으로 해당 호스트 활성 여부 점검
-    alive = os.system("ping -c 1" + str(target) + " > /dev/null")
+    alive = os.system("ping -c 1 " + str(target) + " > /dev/null")
     if alive == 0: #ping 명령어에 대한 응답이 성공하면 0 변환
         #작업 시간 및 로그 기록
         timelog = datetime.now().strftime("%Y-%m-%D %H:%M:%S")
@@ -55,7 +55,7 @@ if __name__ == "__main__":
         t.start()
         #스레드 관리 목록에 저장
         threads.append(t)
-    ip_range = list(ipaddress.ip_network("127.0.0.1/24"))
+    ip_range = list(ipaddress.IPv4Network("192.168.0.0/16"))
     for host in ip_range[1: -1]: #범위 내의 모든 IP에 대해 점검 실시
             q.put(host) #해당 호스틑 IP를 작업 대기열에 추가
     
