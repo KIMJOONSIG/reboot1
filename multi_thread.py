@@ -5,7 +5,7 @@ import ipaddress
 import socket
 import os
 
-ports = {22, 53, 80, 443, 3389}
+ports = {22, 53, 80, 443, 3389, 8080}
 additional_ports = range(1, 1025) # 1~1024 포트 범위 추가
 
 def scanner(target):
@@ -55,7 +55,7 @@ if __name__ == "__main__":
         t.start()
         #스레드 관리 목록에 저장
         threads.append(t)
-    ip_range = list(ipaddress.ip_network("127.0.0.1"))
+    ip_range = list(ipaddress.ip_network("127.0.0.1/24"))
     for host in ip_range[1: -1]: #범위 내의 모든 IP에 대해 점검 실시
             q.put(host) #해당 호스틑 IP를 작업 대기열에 추가
     
