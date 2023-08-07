@@ -55,7 +55,7 @@ if __name__ == "__main__":
         t.start()
         #스레드 관리 목록에 저장
         threads.append(t)
-    ip_range = list(ipaddress.IPv4Network("192.168.0.0/16"))
+    ip_range = list(ipaddress.IPv4Network("192.168.0.0/24"))
     for host in ip_range[1: -1]: #범위 내의 모든 IP에 대해 점검 실시
             q.put(host) #해당 호스틑 IP를 작업 대기열에 추가
     
