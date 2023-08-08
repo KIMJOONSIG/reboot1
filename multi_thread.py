@@ -6,7 +6,7 @@ import socket
 import os
 
 ports = {21, 22, 80, 5000, 7000}
-ping_timeout = 3
+ping_timeout = 2
 
 def scanner(target):
     #pimg 명령으로 해당 호스트 활성 여부 점검
