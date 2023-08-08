@@ -6,7 +6,6 @@ import socket
 import os
 
 ports = {22, 53, 80, 443, 3389, 8080}
-additional_ports = range(1, 1025) # 1~1024 포트 범위 추가
 
 def scanner(target):
     #pimg 명령으로 해당 호스트 활성 여부 점검
@@ -55,10 +54,19 @@ if __name__ == "__main__":
         t.start()
         #스레드 관리 목록에 저장
         threads.append(t)
-    ip_range = list(ipaddress.IPv4Network("192.168.0.0/24"))
-    for host in ip_range[1: -1]: #범위 내의 모든 IP에 대해 점검 실시
+
+    ip_input = input("원하는 IP 대역 혹은 원하는 IP를 넣으세요 (ex) 192.168.0.0/24 or 192.168.0.1): ")
+    try:
+        ip_range = list(ipaddress.IPv4Network(ip_input))
+        for host in ip_range[1: -1]: #범위 내의 모든 IP에 대해 점검 실시
             q.put(host) #해당 호스틑 IP를 작업 대기열에 추가
-    
+    except ValueError: #입력이 IP 대역이 아닌 개별 IP인 경우
+        try:
+            ipaddress.IPv4Address(ip_input) # 입력이 유효한 ip인지 확인
+            q.put(ip_input)
+        except ipaddress.AddressValueError:
+            print("올바른 IP대역 혹은 IP를 입력해주세요.")
+            exit(1)
     #대기열에 추가돼 있는 작업들이 모두 완료될 때까지 대기
     q.join()
 
