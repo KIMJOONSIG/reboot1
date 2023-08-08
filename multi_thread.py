@@ -5,16 +5,19 @@ import ipaddress
 import socket
 import os
 
-ports = {22, 53, 80, 443, 3389, 8080}
+ports = {21, 22, 80, 5000, 7000}
+ping_timeout = 3
 
 def scanner(target):
     #pimg 명령으로 해당 호스트 활성 여부 점검
-    alive = os.system("ping -c 1 " + str(target) + " > /dev/null")
+    alive = os.system("ping -c 1 -W {} {} > /dev/null".format(ping_timeout, target))
     if alive == 0: #ping 명령어에 대한 응답이 성공하면 0 변환
         #작업 시간 및 로그 기록
-        timelog = datetime.now().strftime("%Y-%m-%D %H:%M:%S")
-        print(timelog + ": target host " + str(target) + "is up")
+        timelog = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        print(timelog + ": target host " + str(target) + " 활성화 되어 있습니다.")
         #포트 스캔 실시
+        open_ports = [] #개발된 포트를 저장할 리스트 생성
+
         for port in ports: #진단할 포트 목록 순회
             #소켓 생성
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -22,9 +25,14 @@ def scanner(target):
             result = sock.connect_ex((str(target), port))
             #0이 반환되면 개방된 포트라는 의미
             if result == 0:
-                print("---------->> Port " + str(port) + " is opened")
-            #현재의 소켓 연결을 닫고 다음 포트 스캔 수행
+                open_ports.append(port)
             sock.close()
+
+        if open_ports:        
+            print("---------->> Open Ports " + ", ".join(map(str, open_ports)))
+        else:
+            print("열린 포트 없음.")
+            #현재의 소켓 연결을 닫고 다음 포트 스캔 수행
 
 def worker(): #스레드가 수행할 작업을 명시하는 함수
     while True: #무한 루프로 작업 대기열의 모든 작업을 반복 처리
@@ -58,7 +66,7 @@ if __name__ == "__main__":
     ip_input = input("원하는 IP 대역 혹은 원하는 IP를 넣으세요 (ex) 192.168.0.0/24 or 192.168.0.1): ")
     try:
         ip_range = list(ipaddress.IPv4Network(ip_input))
-        for host in ip_range[1: -1]: #범위 내의 모든 IP에 대해 점검 실시
+        for host in ip_range: #범위 내의 모든 IP에 대해 점검 실시
             q.put(host) #해당 호스틑 IP를 작업 대기열에 추가
     except ValueError: #입력이 IP 대역이 아닌 개별 IP인 경우
         try:
@@ -73,7 +81,7 @@ if __name__ == "__main__":
     #스레드 파괴 작업
     for i in range(30):
         q.put(None) #대기열에 빈 작업을 할당해 정리
-    for i in threads: #진행 중이던 모든 스레드가 전부 종료될 때까지 대기
+    for t in threads: #진행 중이던 모든 스레드가 전부 종료될 때까지 대기
         t.join()
     end_time = datetime.now() #작업 종료 시간 기록
 
