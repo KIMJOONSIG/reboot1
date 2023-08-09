@@ -5,7 +5,7 @@ import ipaddress
 import socket
 import os
 
-ports = {21, 22, 80, 5000, 7000}
+ports = {21, 22, 8080, 5000, 7000}
 ping_timeout = 2
 
 def scanner(target):
