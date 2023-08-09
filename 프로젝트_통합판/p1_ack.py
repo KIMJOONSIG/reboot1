@@ -18,4 +18,3 @@ def ack_scan(target_ip, target_port):
 #target_ip = "183.111.182.232" # 대상 호스트 IP
 
 #for target_port in range(10001): #0부터 10000까지의 포트 범위
-    #ack_scan(target_ip, target_port)

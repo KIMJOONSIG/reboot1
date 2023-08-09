@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>917</width>
-    <height>733</height>
+    <height>753</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -49,26 +49,6 @@
             </property>
             <property name="value">
              <number>24</number>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0" rowspan="3" colspan="2">
-           <widget class="QListWidget" name="listWidget">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>450</width>
-              <height>330</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">border: 2px solid rgb(3, 3, 3);
-border-radius: 5px;</string>
             </property>
            </widget>
           </item>
@@ -186,14 +166,37 @@ background-color:rgb(15, 170, 170)</string>
               </rect>
              </property>
             </widget>
-            <widget class="QLineEdit" name="input_stealth_port">
+            <widget class="QLineEdit" name="stealth_start_port">
              <property name="geometry">
               <rect>
                <x>50</x>
                <y>90</y>
-               <width>231</width>
+               <width>91</width>
                <height>31</height>
               </rect>
+             </property>
+            </widget>
+            <widget class="QLineEdit" name="stealth_end_port">
+             <property name="geometry">
+              <rect>
+               <x>190</x>
+               <y>90</y>
+               <width>91</width>
+               <height>31</height>
+              </rect>
+             </property>
+            </widget>
+            <widget class="QLabel" name="label_2">
+             <property name="geometry">
+              <rect>
+               <x>160</x>
+               <y>100</y>
+               <width>16</width>
+               <height>16</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>~</string>
              </property>
             </widget>
            </widget>
@@ -256,6 +259,32 @@ background-color:rgb(170, 170, 255);</string>
             <property name="title">
              <string>ping 스캔</string>
             </property>
+            <widget class="QLineEdit" name="ping_ip">
+             <property name="geometry">
+              <rect>
+               <x>80</x>
+               <y>50</y>
+               <width>231</width>
+               <height>31</height>
+              </rect>
+             </property>
+            </widget>
+            <widget class="QLabel" name="lbl_stealth_ip_3">
+             <property name="geometry">
+              <rect>
+               <x>30</x>
+               <y>50</y>
+               <width>41</width>
+               <height>31</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string>IP대역</string>
+             </property>
+            </widget>
            </widget>
           </item>
           <item row="4" column="2" colspan="3">
@@ -284,35 +313,6 @@ border-radius: 5px;</string>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
             </property>
-           </widget>
-          </item>
-          <item row="5" column="2" colspan="3">
-           <widget class="QScrollArea" name="output_small">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>200</width>
-              <height>220</height>
-             </size>
-            </property>
-            <property name="widgetResizable">
-             <bool>true</bool>
-            </property>
-            <widget class="QWidget" name="scrollAreaWidgetContents_6">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>0</y>
-               <width>415</width>
-               <height>218</height>
-              </rect>
-             </property>
-            </widget>
            </widget>
           </item>
           <item row="0" column="2" colspan="2">
@@ -353,7 +353,7 @@ border-radius: 5px;</string>
               <rect>
                <x>70</x>
                <y>50</y>
-               <width>231</width>
+               <width>251</width>
                <height>31</height>
               </rect>
              </property>
@@ -374,14 +374,37 @@ border-radius: 5px;</string>
               <string>Port</string>
              </property>
             </widget>
-            <widget class="QLineEdit" name="input_ack_port">
+            <widget class="QLineEdit" name="ack_start_port">
              <property name="geometry">
               <rect>
                <x>70</x>
                <y>90</y>
-               <width>231</width>
+               <width>111</width>
                <height>31</height>
               </rect>
+             </property>
+            </widget>
+            <widget class="QLineEdit" name="ack_end_port">
+             <property name="geometry">
+              <rect>
+               <x>210</x>
+               <y>90</y>
+               <width>111</width>
+               <height>31</height>
+              </rect>
+             </property>
+            </widget>
+            <widget class="QLabel" name="label">
+             <property name="geometry">
+              <rect>
+               <x>190</x>
+               <y>100</y>
+               <width>16</width>
+               <height>16</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>~</string>
              </property>
             </widget>
            </widget>
@@ -396,6 +419,31 @@ background-color:rgb(255, 0, 0);</string>
              <string>리셋</string>
             </property>
            </widget>
+          </item>
+          <item row="3" column="0" rowspan="3" colspan="2">
+           <widget class="QTextBrowser" name="textBrowser">
+            <property name="minimumSize">
+             <size>
+              <width>420</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777212</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(58, 134, 255);
+background-color: white;
+border: 2px solid rgb(0, 0, 0);
+border-radius: 5px;</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="2" colspan="3">
+           <widget class="QTextBrowser" name="textBrowser2"/>
           </item>
          </layout>
         </item>
