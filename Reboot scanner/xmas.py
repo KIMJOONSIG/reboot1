@@ -18,20 +18,15 @@ def xmas_scan(target, port):
         # 응답 확인
         response = s.recv(1024)
         if not response:
-            print(f"Port {port} is open")
+            return f"Port {port} is open"
         else:
-            print(f"Port {port} is closed")
+            return f"Port {port} is closed"
         
         # 소켓 닫기
         s.close()
     except socket.timeout:
-        print(f"Port {port} is filtered")
+        return f"Port {port} is filtered"
     except ConnectionRefusedError:
-        print(f"Port {port} is closed")
+        return f"Port {port} is closed"
 
-# 대상 호스트와 포트 설정
-target_host = "127.0.0.1"
-target_port = 53
 
-# XMAS 스캔 수행
-xmas_scan(target_host, target_port)

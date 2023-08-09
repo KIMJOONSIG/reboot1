@@ -10,34 +10,34 @@ def icmp_ping(target):
     response = os.system("ping -c 1 -W {} {} > /dev/null".format(ping_timeout, target))
     return response == 0
 
-def worker():
+def worker(q, results):
     while True:
         target = q.get()
         if target is None:
             break
         if icmp_ping(target):
-            print("Host {} 활성화 되어 있습니다.".format(target))
+            results.append("Host {} 활성화 되어 있습니다.".format(target))
         else:
-            print("Host {} 활성화 되어 있지 않습니다.".format(target))
+            results.append("Host {} 활성화 되어 있지 않습니다.".format(target))
         q.task_done()
 
-if __name__ == "__main__":
+def ping_scan(ip_input):
     start_time = datetime.now()
     q = queue.Queue()
-    
+    results = []
+
     threads = []
     for i in range(30):
-        t = threading.Thread(target=worker)
+        t = threading.Thread(target=worker, args=(q, results))
         t.setDaemon(True)
         t.start()
         threads.append(t)
     
-    ip_input = input("원하는 IP 대역 혹은 원하는 IP를 넣으세요 (ex) 192.168.0.0/24 or 192.168.0.1): ")
     try:
         ip_range = list(ipaddress.IPv4Network(ip_input))
         if "/" in ip_input:
             for host in ip_range:
-                q.put(host)
+                q.put(str(host))  # ipaddress.IPv4Network 객체를 문자열로 변환하여 큐에 추가
         else:
             q.put(ip_input)
     except ValueError:
@@ -45,15 +45,23 @@ if __name__ == "__main__":
             ipaddress.IPv4Address(ip_input)
             q.put(ip_input)
         except ipaddress.AddressValueError:
-            print("올바른 IP대역 혹은 IP를 입력해주세요.")
-            exit(1)
+            return "올바른 IP대역 혹은 IP를 입력해주세요."
     
     q.join()
-    
-    for i in range(30):
+
+    # 스레드 종료 신호 보내기
+    for _ in range(30):
         q.put(None)
     for t in threads:
         t.join()
-    end_time = datetime.now()
     
-    print("Scanning Completed in : " + str(end_time - start_time))
+    end_time = datetime.now()
+    duration = end_time - start_time
+    
+    word=""
+    for result in results:
+        word=word+result+"\n"
+        
+    
+    return word+"Scanning Completed in: " + str(duration)
+
