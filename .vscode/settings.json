@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./포트스캐너"
+    ]
+}
