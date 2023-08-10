@@ -1,28 +1,7 @@
 import socket
+import random
+import sys
 
-#포트 번호와 서비스 매핑
-port_services = {
-    20: "FTP Data Transfer",
-    21: "FTP Control Command",
-    22: "SSH",
-    23: "Telnet",
-    25: "SMTP",
-    53: "DNS",
-    80: "HTTP",
-    110: "POP3",
-    143: "IMAP",
-    443: "HTTPS",
-    465: "SMTPS",
-    587: "SMTP",
-    993: "IMAPS",
-    995: "POP3S",
-    3389: "RDP",
-    5432: "PostgreSQL",
-    3306: "MySQL",
-    1521: "Oracle",
-    27017: "MongoDB",
-
-}
 
 def null_scan(target_ip, target_port):
     try:
@@ -31,8 +10,7 @@ def null_scan(target_ip, target_port):
         result = raw_socket.connect_ex((target_ip, target_port))
 
         if result == 0:
-            service = port_services.get(target_port, "Unknown")
-            return f"Port {target_port} ({service}) is open."
+            return f"Port {target_port} is open."
         else:
             return f"Port {target_port} is closed or filtered."
 
@@ -41,10 +19,3 @@ def null_scan(target_ip, target_port):
 
     except Exception as e:
         return f"Port {target_port} state is unknown. Error: {str(e)}"
-
-
-
-
-
-
-
