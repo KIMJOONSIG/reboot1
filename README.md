@@ -8,3 +8,9 @@
 - **과제 주제:** 서비스 포트 스캐너 구현
 - **과제 기간:** 2023.08.07 ~ 2023.08.14
 
+<br>
+
+## Technical Skills
+
+### Languages
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white"/>
