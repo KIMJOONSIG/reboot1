@@ -24,3 +24,14 @@
 <br>
 
 ## 조원 소개
+
+<table>
+  <tr>
+    <th colspan="2" align="center">프로필</th>
+    <th align="center">역할</th>
+    <th align="center">맡은 부분</th>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://opgc.me/#/users/psk0812" target="_blank"><img src="https://api.opgc.me/githubs/users/psk0812/tag/?theme=basic" /></a>
+  </tr>
+</table>
