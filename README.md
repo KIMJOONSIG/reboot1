@@ -34,7 +34,7 @@
   <tr>
     <td align="center">박서경</td>
     <td align="center">조장</td>
-    <th align="center">APP GUI Integration</th>
+    <th align="center">APP GUI, half-open Scanner</th>
   </tr>
     <tr>
     <td align="center">김준식</td>
@@ -77,7 +77,7 @@ Reboot scanner
 │   ├── multi_thread_no_port.py
 │   ├── p1_ack.py
 │   ├── p1_fin.py
-│   ├── p1_falf.py
+│   ├── p1_half.py
 │   ├── p1_null.py
 │   ├── scan_design.py
 │   └── xmas.py
