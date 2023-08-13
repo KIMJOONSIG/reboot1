@@ -62,3 +62,23 @@
     <th align="center">XMAS Scanner</th>
   </tr>
 </table>
+
+## 🗂️ Repository 구조
+
+```bash
+Reboot scanner
+├── GUI
+│   └── scan_design.py
+├── code
+│   ├── NULLscan.py
+│   ├── SYNscan.py
+│   ├── banner.py
+│   ├── multi_thread_no_port.py
+│   ├── p1_ack.py
+│   ├── p1_fin.py
+│   ├── p1_falf.py
+│   ├── p1_null.py
+│   ├── scan_design.py
+│   └── xmas.py
+└── 통합.py
+``` 
