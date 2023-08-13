@@ -3,7 +3,7 @@ import random
 import sys
 
 
-def null_scan(target_ip, target_port):
+def null_scan_no(target_ip, target_port):
     try:
         # TCP raw 소켓 생성, 해당 스캔은 별도의 플래그 설정이 없다
         raw_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -19,3 +19,10 @@ def null_scan(target_ip, target_port):
 
     except Exception as e:
         return f"Port {target_port} state is unknown. Error: {str(e)}"
+
+
+
+
+
+
+

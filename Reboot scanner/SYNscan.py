@@ -24,31 +24,33 @@ def syn_scan(target_ip, port):
         # 응답 처리
         response = tcp_socket.recv(4096)
         tcp_socket.close()
-        print(port)
-        print(response)
+        word=""
+        word+=f"Port : {port}"+'\n'
+        word+=f"Port : {response}"+'\n'
         if response != b'':
-            print(port)
-            print(response)
+            
             if b"SSH" in response:
-                print(f"Port : {port} / SSH")    
+                word+=f"Port : {port} / SSH"+'\n'  
             elif b"HTTP" in response:
-                print(f"Port : {port} / HTTP")
+                word+=f"Port : {port} / HTTP"+'\n'
             elif b"SMTP" in response:
-                print(f"Port : {port} / SMTP")    
+                word+=f"Port : {port} / SMTP"+'\n'  
             elif b"MySQL" in response: 
-                print(f"Port : {port} / MySQL")
+                word+=f"Port : {port} / MySQL"+'\n'
             elif b"FTP" in response:
-                print(f"Port : {port} / FTP")
+                word+=f"Port : {port} / FTP"+'\n'
             elif b"+OK" in response:
-                print(f"Port : {port} / POP3")
+                word+=f"Port : {port} / POP3"+'\n'
 
-            return f"Port {port} is open\n{response}"
+            return word+f"Port {port} is open\n{response}"
         else:
-            return f"Port {port} is closed\n{response}"
+            return word+f"Port {port} is closed\n{response}"
         
         
 
     
     except Exception as e:
-        return f"Port {port} state is unknown. Error: {str(e)}"
+        return f"Port {port} state is unknown."
+
+
 
