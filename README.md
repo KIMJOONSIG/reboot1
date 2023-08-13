@@ -67,6 +67,7 @@
 
 ```bash
 Reboot scanner
+│
 ├── GUI
 │   └── scan_design.py
 ├── code
