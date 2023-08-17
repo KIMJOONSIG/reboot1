@@ -1,21 +1,22 @@
-from scapy.layers.inet import IP, TCP
-from scapy.all import sr1, send
+import socket
 
 def half_scan(target_ip, target_port):
-    # SYN 플래그를 설정하여 패킷 생성
-    packet = IP(dst=target_ip) / TCP(dport=target_port, flags="S")
-    response = sr1(packet, timeout=1, verbose=0)
-
-    if response is None:
-        return None
-    elif response.haslayer(TCP):
-        if response[TCP].flags == 0x12:  # SYN, ACK 플래그가 설정된 응답 확인
-            send_rst = IP(dst=target_ip) / TCP(dport=target_port, flags="R")
-            send(send_rst)  # RST 패킷 전송
-            return f"Port {target_port} is open."
-        elif response[TCP].flags == 0x14:  # RST 플래그만 설정된 응답 확인
-            return None
+    try:
+        # 소켓 생성
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        # 타임아웃 설정 (0.5초로 설정, 연결을 기다리지 않음)
+        sock.settimeout(0.5)
+        # 포트에 연결 시도
+        result = sock.connect_ex((target_ip, target_port))
+        
+        if result == 0:
+            return f"Port {target_port} is OPEN"
         else:
             return None
-    else:
+
+        sock.close()
+
+    except socket.error:
         return None
+
+
