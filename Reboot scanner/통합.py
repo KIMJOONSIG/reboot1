@@ -116,7 +116,7 @@ class WindowClass(QMainWindow, form_class):
             banner=get_information(target_ip)
             self.output_syn.append(banner)
             with concurrent.futures.ThreadPoolExecutor(max_workers=500) as executor:
-                futures = [executor.submit(self.syn_thread, target_ip, port) for port in range(start_port, end_port)]
+                futures = [executor.submit(self.syn_thread, target_ip, port) for port in range(start_port, end_port+1)]
     
         except: 
             
@@ -145,7 +145,7 @@ class WindowClass(QMainWindow, form_class):
 
             elif self.combo_stealth.currentText() == "Null Scan":
                 threads = []
-                for port in range(start_port, end_port):
+                for port in range(start_port, end_port+1):
                     thread = threading.Thread(
                         target=self.null_thread, args=(target_ip, port)
                     )
@@ -157,7 +157,7 @@ class WindowClass(QMainWindow, form_class):
 
             elif self.combo_stealth.currentText() == "Fin Scan":
                 threads = []
-                for port in range(start_port, end_port):
+                for port in range(start_port, end_port+1):
                     thread = threading.Thread(
                         target=self.fin_thread, args=(target_ip, port)
                     )
@@ -168,7 +168,7 @@ class WindowClass(QMainWindow, form_class):
                     thread.join()
             elif self.combo_stealth.currentText() == "Xmas Scan":
                 threads = []
-                for port in range(start_port, end_port):
+                for port in range(start_port, end_port+1):
                     thread = threading.Thread(
                         target=self.xmas_thread, args=(target_ip, port)
                     )
@@ -179,7 +179,7 @@ class WindowClass(QMainWindow, form_class):
                     thread.join()
             else:
                 threads = []
-                for port in range(start_port, end_port):
+                for port in range(start_port, end_port+1):
                     thread = threading.Thread(
                         target=self.half_thread, args=(target_ip, port)
                     )
