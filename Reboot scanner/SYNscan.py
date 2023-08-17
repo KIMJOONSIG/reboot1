@@ -25,8 +25,8 @@ def syn_scan(target_ip, port):
         response = tcp_socket.recv(4096)
         tcp_socket.close()
         word=""
-        word+=f"Port : {port}"+'\n'
-        word+=f"Port : {response}"+'\n'
+        #word+=f"Port : {port}"+'\n'
+        #word+=f"Port : {response}"+'\n'
         if response != b'':
             
             if b"SSH" in response:
@@ -42,15 +42,15 @@ def syn_scan(target_ip, port):
             elif b"+OK" in response:
                 word+=f"Port : {port} / POP3"+'\n'
 
-            return word+f"Port {port} is open\n{response}"
+            return word+f"Port {port} is open\n"
         else:
-            return word+f"Port {port} is closed\n{response}"
+            return None
         
         
 
     
     except Exception as e:
-        return f"Port {port} state is unknown."
+        return None
 
 
 

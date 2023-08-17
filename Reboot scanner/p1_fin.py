@@ -1,22 +1,48 @@
 from scapy.layers.inet import IP, TCP
 from scapy.all import sr1
+from scapy.layers.inet import IP, TCP
+from scapy.all import sr1
+import socket
 
-def fin_scan(target_ip, target_port):
-    packet = IP(dst=target_ip) / TCP(dport=target_port, flags="F")
+def ack_scan(target_ip, target_port):
+    packet = IP(dst=target_ip) / TCP(dport=target_port, flags="A")
     response = sr1(packet, timeout=1, verbose=0)
 
     if response is None:
-        return f"Port {target_port} is open or filtered."
+        return False
     elif response.haslayer(TCP):
-        if response[TCP].flags == 0x14:  # RST, ACK 플래그가 설정된 응답 확인
-            return f"Port {target_port} is closed."
+        if response[TCP]. flags & 4: # RST 플래그가 설정되어 있는지 확인
+            return True
         else:
-            return f"Port {target_port} is open or filtered."
+            return False
     else:
-        return f"Port {target_port} is open or filtered."
+        return False
+
+def fin_scan(target_ip, target_port):
+    if ack_scan(target_ip, target_port)==False: return None
+    try:
+        # 소켓 생성
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(0.5)
+        
+        # 포트 연결 시도
+        result = sock.connect_ex((target_ip, target_port))
+        
+        # FIN 플래그 설정
+        sock.send(b'\x01', socket.MSG_OOB)
+        
+        # 응답 받기
+        response = sock.recv(1024)
+        
+        if result == 0:
+            return f"Port {target_port} is open."
+        else:
+            return None
+    except Exception as e:
+        return None
 
 # FIN 스캔 함수 호출
 #print(fin_scan("127.0.0.1", 80))  # 예시로 IP 주소와 포트를 수정해서 호출해주세요
 
-
-
+# for i in range(1,100):
+#     print(fin_scan("183.111.182.232",i))

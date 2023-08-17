@@ -8,7 +8,7 @@ ping_timeout = 2
 
 def icmp_ping(target):
     response = os.system("ping -c 1 -W {} {} > /dev/null".format(ping_timeout, target))
-    return response == 0
+    return response
 
 def worker(q, results):
     while True:
@@ -64,4 +64,3 @@ def ping_scan(ip_input):
         
     
     return word+"Scanning Completed in: " + str(duration)
-

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>831</width>
-    <height>596</height>
+    <height>460</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -57,7 +57,209 @@
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
          <layout class="QGridLayout" name="gridLayout">
-          <item row="1" column="0">
+          <item row="0" column="0">
+           <widget class="QGroupBox" name="groupBox_ping">
+            <property name="minimumSize">
+             <size>
+              <width>350</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="title">
+             <string>ping 스캔</string>
+            </property>
+            <widget class="QLineEdit" name="ping_ip">
+             <property name="geometry">
+              <rect>
+               <x>90</x>
+               <y>50</y>
+               <width>231</width>
+               <height>31</height>
+              </rect>
+             </property>
+            </widget>
+            <widget class="QLabel" name="lbl_stealth_ip_3">
+             <property name="geometry">
+              <rect>
+               <x>40</x>
+               <y>50</y>
+               <width>41</width>
+               <height>31</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string>IP대역</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="btn_ping">
+             <property name="geometry">
+              <rect>
+               <x>240</x>
+               <y>110</y>
+               <width>80</width>
+               <height>23</height>
+              </rect>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">
+	color: rgb(58, 134, 255);
+	background-color: white;
+	border: 2px solid rgb(58, 134, 255);
+	border-radius: 5px;
+</string>
+             </property>
+             <property name="text">
+              <string>스캔시작</string>
+             </property>
+            </widget>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QPushButton" name="btn_allreset">
+            <property name="styleSheet">
+             <string notr="true">color: white;
+	background-color:rgb(255, 0, 110);</string>
+            </property>
+            <property name="text">
+             <string>All_Reset</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QGroupBox" name="groupBox_syn">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>350</width>
+              <height>170</height>
+             </size>
+            </property>
+            <property name="title">
+             <string>SYN 스캔</string>
+            </property>
+            <widget class="QLabel" name="lbl_stealth_ip_5">
+             <property name="geometry">
+              <rect>
+               <x>50</x>
+               <y>50</y>
+               <width>21</width>
+               <height>31</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string>IP</string>
+             </property>
+            </widget>
+            <widget class="QLineEdit" name="input_syn_ip">
+             <property name="geometry">
+              <rect>
+               <x>80</x>
+               <y>50</y>
+               <width>231</width>
+               <height>31</height>
+              </rect>
+             </property>
+            </widget>
+            <widget class="QLabel" name="lbl_stealth_port_3">
+             <property name="geometry">
+              <rect>
+               <x>40</x>
+               <y>90</y>
+               <width>31</width>
+               <height>31</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string>Port</string>
+             </property>
+            </widget>
+            <widget class="QLineEdit" name="syn_start_port">
+             <property name="geometry">
+              <rect>
+               <x>80</x>
+               <y>90</y>
+               <width>91</width>
+               <height>31</height>
+              </rect>
+             </property>
+            </widget>
+            <widget class="QLabel" name="label_3">
+             <property name="geometry">
+              <rect>
+               <x>190</x>
+               <y>100</y>
+               <width>16</width>
+               <height>16</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>~</string>
+             </property>
+            </widget>
+            <widget class="QLineEdit" name="syn_end_port">
+             <property name="geometry">
+              <rect>
+               <x>220</x>
+               <y>90</y>
+               <width>91</width>
+               <height>31</height>
+              </rect>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="btn_syn">
+             <property name="geometry">
+              <rect>
+               <x>230</x>
+               <y>130</y>
+               <width>80</width>
+               <height>23</height>
+              </rect>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color:rgb(234, 116, 255);
+	background-color: white;
+	border: 2px solid rgb(234, 116, 255);
+	border-radius: 5px;</string>
+             </property>
+             <property name="text">
+              <string>스캔시작</string>
+             </property>
+            </widget>
+           </widget>
+          </item>
+          <item row="2" column="0">
            <widget class="QGroupBox" name="groupBox_stealth">
             <property name="title">
              <string>Stealth 스캔</string>
@@ -203,406 +405,6 @@
             </widget>
            </widget>
           </item>
-          <item row="0" column="0">
-           <widget class="QGroupBox" name="groupBox_ping">
-            <property name="minimumSize">
-             <size>
-              <width>350</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="title">
-             <string>ping 스캔</string>
-            </property>
-            <widget class="QLineEdit" name="ping_ip">
-             <property name="geometry">
-              <rect>
-               <x>90</x>
-               <y>50</y>
-               <width>231</width>
-               <height>31</height>
-              </rect>
-             </property>
-            </widget>
-            <widget class="QLabel" name="lbl_stealth_ip_3">
-             <property name="geometry">
-              <rect>
-               <x>40</x>
-               <y>50</y>
-               <width>41</width>
-               <height>31</height>
-              </rect>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>IP대역</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="btn_ping">
-             <property name="geometry">
-              <rect>
-               <x>240</x>
-               <y>110</y>
-               <width>80</width>
-               <height>23</height>
-              </rect>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>80</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">
-	color: rgb(58, 134, 255);
-	background-color: white;
-	border: 2px solid rgb(58, 134, 255);
-	border-radius: 5px;
-</string>
-             </property>
-             <property name="text">
-              <string>스캔시작</string>
-             </property>
-            </widget>
-           </widget>
-          </item>
-          <item row="0" column="1" colspan="2">
-           <widget class="QGroupBox" name="groupBox_ack">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>350</width>
-              <height>150</height>
-             </size>
-            </property>
-            <property name="title">
-             <string>ACK 스캔</string>
-            </property>
-            <widget class="QLabel" name="lbl_stealth_ip_2">
-             <property name="geometry">
-              <rect>
-               <x>20</x>
-               <y>30</y>
-               <width>21</width>
-               <height>31</height>
-              </rect>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>IP</string>
-             </property>
-            </widget>
-            <widget class="QLineEdit" name="input_ack_ip">
-             <property name="geometry">
-              <rect>
-               <x>60</x>
-               <y>30</y>
-               <width>251</width>
-               <height>31</height>
-              </rect>
-             </property>
-            </widget>
-            <widget class="QLabel" name="lbl_stealth_port_2">
-             <property name="geometry">
-              <rect>
-               <x>20</x>
-               <y>70</y>
-               <width>31</width>
-               <height>31</height>
-              </rect>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>Port</string>
-             </property>
-            </widget>
-            <widget class="QLineEdit" name="ack_start_port">
-             <property name="geometry">
-              <rect>
-               <x>60</x>
-               <y>70</y>
-               <width>111</width>
-               <height>31</height>
-              </rect>
-             </property>
-            </widget>
-            <widget class="QLineEdit" name="ack_end_port">
-             <property name="geometry">
-              <rect>
-               <x>200</x>
-               <y>70</y>
-               <width>111</width>
-               <height>31</height>
-              </rect>
-             </property>
-            </widget>
-            <widget class="QLabel" name="label">
-             <property name="geometry">
-              <rect>
-               <x>180</x>
-               <y>80</y>
-               <width>16</width>
-               <height>16</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>~</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="btn_ack">
-             <property name="geometry">
-              <rect>
-               <x>240</x>
-               <y>110</y>
-               <width>75</width>
-               <height>23</height>
-              </rect>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">color: rgb(0, 170, 0);
-	background-color: white;
-	border: 2px solid rgb(0, 170, 0);
-	border-radius: 5px;</string>
-             </property>
-             <property name="text">
-              <string>스캔시작</string>
-             </property>
-            </widget>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QGroupBox" name="groupBox_syn">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>350</width>
-              <height>170</height>
-             </size>
-            </property>
-            <property name="title">
-             <string>SYN 스캔</string>
-            </property>
-            <widget class="QLabel" name="lbl_stealth_ip_5">
-             <property name="geometry">
-              <rect>
-               <x>50</x>
-               <y>50</y>
-               <width>21</width>
-               <height>31</height>
-              </rect>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>IP</string>
-             </property>
-            </widget>
-            <widget class="QLineEdit" name="input_syn_ip">
-             <property name="geometry">
-              <rect>
-               <x>80</x>
-               <y>50</y>
-               <width>231</width>
-               <height>31</height>
-              </rect>
-             </property>
-            </widget>
-            <widget class="QLabel" name="lbl_stealth_port_3">
-             <property name="geometry">
-              <rect>
-               <x>40</x>
-               <y>90</y>
-               <width>31</width>
-               <height>31</height>
-              </rect>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>Port</string>
-             </property>
-            </widget>
-            <widget class="QLineEdit" name="syn_start_port">
-             <property name="geometry">
-              <rect>
-               <x>80</x>
-               <y>90</y>
-               <width>91</width>
-               <height>31</height>
-              </rect>
-             </property>
-            </widget>
-            <widget class="QLabel" name="label_3">
-             <property name="geometry">
-              <rect>
-               <x>190</x>
-               <y>100</y>
-               <width>16</width>
-               <height>16</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>~</string>
-             </property>
-            </widget>
-            <widget class="QLineEdit" name="syn_end_port">
-             <property name="geometry">
-              <rect>
-               <x>220</x>
-               <y>90</y>
-               <width>91</width>
-               <height>31</height>
-              </rect>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="btn_syn">
-             <property name="geometry">
-              <rect>
-               <x>230</x>
-               <y>130</y>
-               <width>80</width>
-               <height>23</height>
-              </rect>
-             </property>
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>80</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">color:rgb(234, 116, 255);
-	background-color: white;
-	border: 2px solid rgb(234, 116, 255);
-	border-radius: 5px;</string>
-             </property>
-             <property name="text">
-              <string>스캔시작</string>
-             </property>
-            </widget>
-           </widget>
-          </item>
-          <item row="1" column="1" colspan="2">
-           <widget class="QGroupBox" name="groupBox_banner">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>350</width>
-              <height>150</height>
-             </size>
-            </property>
-            <property name="title">
-             <string>배너 그랩</string>
-            </property>
-            <widget class="QLineEdit" name="banner_ip">
-             <property name="geometry">
-              <rect>
-               <x>100</x>
-               <y>40</y>
-               <width>201</width>
-               <height>31</height>
-              </rect>
-             </property>
-            </widget>
-            <widget class="QLabel" name="lbl_stealth_ip_4">
-             <property name="geometry">
-              <rect>
-               <x>40</x>
-               <y>40</y>
-               <width>21</width>
-               <height>31</height>
-              </rect>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>IP</string>
-             </property>
-            </widget>
-            <widget class="QLineEdit" name="banner_port">
-             <property name="geometry">
-              <rect>
-               <x>100</x>
-               <y>80</y>
-               <width>201</width>
-               <height>31</height>
-              </rect>
-             </property>
-            </widget>
-            <widget class="QLabel" name="port">
-             <property name="geometry">
-              <rect>
-               <x>30</x>
-               <y>80</y>
-               <width>31</width>
-               <height>31</height>
-              </rect>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>Port</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="btn_banner">
-             <property name="geometry">
-              <rect>
-               <x>230</x>
-               <y>120</y>
-               <width>75</width>
-               <height>23</height>
-              </rect>
-             </property>
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">	color: rgb(255, 170, 0);
-	background-color: white;
-	border: 2px solid rgb(255, 170, 0);
-	border-radius: 5px;</string>
-             </property>
-             <property name="text">
-              <string>스캔시작</string>
-             </property>
-            </widget>
-           </widget>
-          </item>
           <item row="2" column="1">
            <widget class="QTabWidget" name="tabWidget">
             <property name="sizePolicy">
@@ -618,7 +420,7 @@
              </size>
             </property>
             <property name="currentIndex">
-             <number>4</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="tab">
              <attribute name="title">
@@ -635,39 +437,6 @@
               </property>
              </widget>
              <widget class="QPushButton" name="btn_ping_reset">
-              <property name="geometry">
-               <rect>
-                <x>120</x>
-                <y>150</y>
-                <width>111</width>
-                <height>23</height>
-               </rect>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color: white;
-	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(255, 190, 11, 255), stop:1 rgba(251, 86, 7, 255));
-	border-radius: 20px;</string>
-              </property>
-              <property name="text">
-               <string>현재 탭 리셋</string>
-              </property>
-             </widget>
-            </widget>
-            <widget class="QWidget" name="tab_2">
-             <attribute name="title">
-              <string>ACK</string>
-             </attribute>
-             <widget class="QTextBrowser" name="output_ack">
-              <property name="geometry">
-               <rect>
-                <x>10</x>
-                <y>10</y>
-                <width>321</width>
-                <height>131</height>
-               </rect>
-              </property>
-             </widget>
-             <widget class="QPushButton" name="btn_ack_reset">
               <property name="geometry">
                <rect>
                 <x>120</x>
@@ -719,39 +488,6 @@
               </property>
              </widget>
             </widget>
-            <widget class="QWidget" name="tab_4">
-             <attribute name="title">
-              <string>배너그랩</string>
-             </attribute>
-             <widget class="QTextBrowser" name="output_banner">
-              <property name="geometry">
-               <rect>
-                <x>10</x>
-                <y>10</y>
-                <width>321</width>
-                <height>131</height>
-               </rect>
-              </property>
-             </widget>
-             <widget class="QPushButton" name="btn_banner_reset">
-              <property name="geometry">
-               <rect>
-                <x>120</x>
-                <y>150</y>
-                <width>111</width>
-                <height>23</height>
-               </rect>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color: white;
-	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(255, 190, 11, 255), stop:1 rgba(251, 86, 7, 255));
-	border-radius: 20px;</string>
-              </property>
-              <property name="text">
-               <string>현재 탭 리셋</string>
-              </property>
-             </widget>
-            </widget>
             <widget class="QWidget" name="tab_5">
              <attribute name="title">
               <string>SYN</string>
@@ -785,17 +521,6 @@
               </property>
              </widget>
             </widget>
-           </widget>
-          </item>
-          <item row="2" column="2">
-           <widget class="QPushButton" name="btn_allreset">
-            <property name="styleSheet">
-             <string notr="true">color: white;
-	background-color:rgb(255, 0, 110);</string>
-            </property>
-            <property name="text">
-             <string>All_Reset</string>
-            </property>
            </widget>
           </item>
          </layout>

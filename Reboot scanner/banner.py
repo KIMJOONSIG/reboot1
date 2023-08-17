@@ -18,7 +18,7 @@ def get_hostname_from_domain(ip_address):
         hostname = socket.gethostbyaddr(ip_address)
         return hostname
     except socket.herror:
-        return ['Failed to resolve hostname.']
+        return None
 
 # IP 주소와 포트로부터 서비스 배너 정보를 가져오는 함수
 def get_Banner(ip_address, port):
@@ -30,7 +30,7 @@ def get_Banner(ip_address, port):
         sock.close()
         return Banner
     except (socket.timeout, ConnectionRefusedError):
-        return "Connection failed."
+        return None
 
 # IP 주소와 포트를 이용하여 정보를 수집하는 함수
 def get_information(ip_address, port=None):
@@ -49,12 +49,12 @@ def get_information(ip_address, port=None):
         
     word=""
         
-    if header_info:
+    if header_info is not None:
         word=word+f"Country: {header_info['country']}"+"\n"
         word=word+f"Timezone: {header_info['timezone']}"+"\n"
-    if hostname:
+    if hostname is not None:
         word=word+f"Hostname: {hostname[0]}"+"\n"
-    if Banner:
+    if Banner is not None:
         word=word+f"Banner: {Banner}"+"\n"
 
     

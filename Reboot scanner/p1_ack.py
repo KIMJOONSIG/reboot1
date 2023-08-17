@@ -19,3 +19,5 @@ def ack_scan(target_ip, target_port):
 
 #for target_port in range(10001): #0부터 10000까지의 포트 범위
 
+
+
