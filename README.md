@@ -81,5 +81,7 @@ Reboot scanner
 │   ├── p1_null.py
 │   ├── scan_design.py
 │   └── xmas.py
-└── 통합.py
+│ 통합.py
+└──── scanner.exe
+
 ``` 
