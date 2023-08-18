@@ -14,7 +14,7 @@ def half_scan(target_ip, target_port):
         else:
             return None
 
-        sock.close()
+        
 
     except socket.error:
         return None

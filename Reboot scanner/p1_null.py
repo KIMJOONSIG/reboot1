@@ -15,30 +15,36 @@ def ack_scan(target_ip, target_port):
             return False
     else:
         return False
-    
+
 def null_scan(target_ip, target_port):
     if ack_scan(target_ip, target_port)==False: return None
     try:
         # 소켓 생성
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(2)
+        sock.settimeout(0.5)
         
         # 포트 연결 시도
         result = sock.connect_ex((target_ip, target_port))
         
-        # 데이터 전송 (Null 패킷)
-        sock.send(b'', 0)
+        # FIN, URG, PSH 플래그 비트 설정
+        flags = socket.MSG_OOB | socket.MSG_PEEK | socket.MSG_DONTROUTE
+        bytes_sent=sock.send(b'', flags)
+        # 데이터 전송 (Xmas 패킷)
+        
         
         # 응답 받기
         response = sock.recv(1024)
-        
-        if result == 0 and len(response) == 0:
+        sock.close()
+        if bytes_sent== 1:
             return f"Port {target_port} is open."
         else:
             return None
-
     except Exception as e:
-        return None
+        
+        if "WinError 10045" in str(e):
+            return f"Port {target_port} is open."
+        else:return None
+
 
 # NULL 스캔 함수 호출
 #print(null_scan("183.111.182.232", 80))  # 예시로 IP 주소와 포트를 수정해서 호출해주세요

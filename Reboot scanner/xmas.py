@@ -28,14 +28,14 @@ def xmas_scan(target_ip, target_port):
         
         # FIN, URG, PSH 플래그 비트 설정
         flags = socket.MSG_OOB | socket.MSG_PEEK | socket.MSG_DONTROUTE
-        
+        bytes_sent=sock.send( b'\x01\x03\x04', flags)
         # 데이터 전송 (Xmas 패킷)
-        sock.send(b'', flags)
+        
         
         # 응답 받기
         response = sock.recv(1024)
-        
-        if result == 0:
+        sock.close()
+        if bytes_sent== 1:
             return f"Port {target_port} is open."
         else:
             return None

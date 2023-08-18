@@ -1,7 +1,5 @@
 from scapy.layers.inet import IP, TCP
 from scapy.all import sr1
-from scapy.layers.inet import IP, TCP
-from scapy.all import sr1
 import socket
 
 def ack_scan(target_ip, target_port):
@@ -28,21 +26,30 @@ def fin_scan(target_ip, target_port):
         # 포트 연결 시도
         result = sock.connect_ex((target_ip, target_port))
         
-        # FIN 플래그 설정
-        sock.send(b'\x01', socket.MSG_OOB)
+        # FIN, URG, PSH 플래그 비트 설정
+        flags = socket.MSG_OOB | socket.MSG_PEEK | socket.MSG_DONTROUTE
+        bytes_sent=sock.send(b'\x01', flags)
+        # 데이터 전송 (Xmas 패킷)
+        
         
         # 응답 받기
         response = sock.recv(1024)
-        
-        if result == 0:
+        sock.close()
+        if bytes_sent== 1:
             return f"Port {target_port} is open."
         else:
             return None
     except Exception as e:
-        return None
+        
+        if "WinError 10045" in str(e):
+            return f"Port {target_port} is open."
+        else:return None
 
-# FIN 스캔 함수 호출
-#print(fin_scan("127.0.0.1", 80))  # 예시로 IP 주소와 포트를 수정해서 호출해주세요
+# Xmas 스캔 함수 호출
+  # 예시로 IP 주소와 포트를 수정해서 호출해주세요
 
-# for i in range(1,100):
-#     print(fin_scan("183.111.182.232",i))
+
+# target_ip = "183.111.182.232" # 대상 호스트 IP
+
+# for target_port in range(1,100): 
+#     print(xmas_scan( "183.111.182.232",target_port))#0부터 10000까지의 포트 범위
